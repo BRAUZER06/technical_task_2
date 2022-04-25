@@ -78,7 +78,6 @@ const Authorization = () => {
           dirty,
         }) => (
           <div className={styles.container}>
-            {console.log(errors)}
             <div className={styles.container__nameUser}>
               <h2>
                 Здравствуйте, <strong>Человек №3596941</strong>
@@ -108,12 +107,13 @@ const Authorization = () => {
                   onBlur={handleBlur}
                   values={values.password}
                   onChange={handleChange}
+                  error={touched.password && errors.password}
                 />
                 <p className={styles.container_all_p_gray}>
                   Ваш новый пароль должен содержать не менее 5 символов.
                 </p>
               </div>
-              {touched.password && errors.password && <p>{errors.password}</p>}
+
               <div className={styles.container__inputs_text}>
                 <p className={styles.container_all_p}>Пароль еще раз</p>
                 <Input
@@ -122,15 +122,14 @@ const Authorization = () => {
                   onBlur={handleBlur}
                   values={values.confirmPassword}
                   onChange={handleChange}
+                  error={touched.confirmPassword && errors.confirmPassword}
                 />
                 <p className={styles.container_all_p_gray}>
                   Повторите пароль, пожалуйста, это обезопасит вас с нами на
                   случай ошибки.
                 </p>
               </div>
-              {touched.confirmPassword && errors.confirmPassword && (
-                <p>{errors.confirmPassword}</p>
-              )}
+
               <hr className={styles.container__inputs_hr} />
               <div className={styles.container__inputs_text}>
                 <p className={styles.container_all_p}>Электронная почта</p>
@@ -140,12 +139,12 @@ const Authorization = () => {
                   name="email"
                   values={values.email}
                   onChange={handleChange}
+                  error={touched.email && errors.email}
                 />
                 <p className={styles.container_all_p_gray}>
                   Можно изменить адрес, указанный при регистрации.{" "}
                 </p>
               </div>
-              {touched.email && errors.email && <p>{errors.email}</p>}
             </div>
             <div className={styles.container__iAgree}>
               <p className={styles.container_all_p}>Я согласен</p>

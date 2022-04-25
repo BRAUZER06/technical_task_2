@@ -4,6 +4,7 @@ import styles from "./Input.module.scss";
 interface InputProps {
   onChange?: (e: any) => {};
   onBlur?: (e: any) => {};
+  error: string;
   values?: string;
   name?: string;
   placeholder?: string;
@@ -15,6 +16,7 @@ interface InputProps {
 const Input: React.FC<InputProps> = ({
   onChange,
   onBlur,
+  error,
   values,
   name,
   placeholder = "введите значение",
@@ -22,11 +24,6 @@ const Input: React.FC<InputProps> = ({
   height,
   type,
 }) => {
-  const inputStyles: InputProps = {
-    width: width,
-    height: height,
-  };
-
   return (
     <div className={styles.Input__container}>
       <input
@@ -35,10 +32,10 @@ const Input: React.FC<InputProps> = ({
         value={values}
         name={name}
         type={type}
-        style={inputStyles}
         placeholder={placeholder}
         className={styles.Input__container_input}
       />
+      <p className={styles.Input__container_error} style={{ color: "red" }}>{error}</p>
     </div>
   );
 };
