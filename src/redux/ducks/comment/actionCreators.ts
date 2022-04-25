@@ -17,7 +17,7 @@ export const fetchAllPostsAction: any = () => {
     try {
       dispatch(fetchPostsLoadingAction());
       const respons = await instance.get("search?country=United+Kingdom");
-      dispatch(fetchPostsSecceesAction(respons.data.items));
+      dispatch(fetchPostsSecceesAction(respons.data));
     } catch (error) {
       dispatch(fetchPostsErrorAction("Не удалось получить посты"));
       console.log(error);

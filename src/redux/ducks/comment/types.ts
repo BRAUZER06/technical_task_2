@@ -17,11 +17,11 @@ interface PostSeccees {
 }
 
 interface Post {
-  "state-province": string;
+  "state-province": string | null;
   country: string;
   name: string;
-  web_pages: string;
-  domains: string;
+  web_pages: any[];
+  domains: any[];
   alpha_two_code: string;
 }
 

@@ -1,5 +1,7 @@
 .Input__container {
   &_input {
+    border-radius: 3px;
+    box-shadow: 2px 2px 4px 1px rgba(34, 60, 80, 0.3);
     width: 305px;
     height: 31px;
     padding: 0px 10px;

@@ -2,17 +2,16 @@ import React from "react";
 import styles from "./Button.module.scss";
 
 interface ButtonProps {
-  value: string;
+  children: string;
+  disabled: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ value }) => {
+const Button: React.FC<ButtonProps> = ({ disabled, children='Кнопка' }) => {
   return (
     <div className={styles.Button__container}>
-      <input
-        className={styles.Button__container_input}
-        type="submite"
-        value={value}
-      />
+      <button className={styles.Button__container_button} disabled={disabled}>
+        {children}
+      </button>
     </div>
   );
 };
