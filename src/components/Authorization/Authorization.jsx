@@ -10,20 +10,34 @@ import { Formik } from "formik";
 import * as yup from "yup";
 
 const Authorization = () => {
-  const { error, loading, posts } = useAppSelector((state) => state.post);
   const dispatch = useDispatch();
+  const { error, loading, posts } = useAppSelector((state) => state.post);
   const validationsSchema = yup.object().shape({
     password: yup
       .string()
       .typeError("Должно быть строкой")
+      .matches(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
+        "Пароль не надежный "
+      )
+      .min(5, "Используйте не менее 5 символов")
+      .max(100, "Слишком большой пароль")
       .required("Укажите пароль"),
     confirmPassword: yup
       .string()
       .oneOf([yup.ref("password")], "Пароли не совпадают")
+      .min(5, "Используйте не менее 5 символов")
+      .max(100, "Слишком большой пароль")
       .required("Это поле обязательно"),
     email: yup
       .string()
       .email("Введите верный email")
+      .matches(
+        /^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@([A-Z|a-z|0-9])+((\.){0,1}[A-Z|a-z|0-9]){2}\.[a-z]{2,3}$/gm,
+        "Введите корректные данные "
+      )
+      .min(5, "Используйте не менее 7 символов")
+      .max(100, "Слишком много символов")
       .required("Укажите E-mail"),
   });
 
@@ -51,7 +65,7 @@ const Authorization = () => {
         onSubmit={(value) => {
           console.log(value);
         }}
-        validationsSchema={validationsSchema}
+        validationSchema={validationsSchema}
       >
         {({
           values,
@@ -64,16 +78,17 @@ const Authorization = () => {
           dirty,
         }) => (
           <div className={styles.container}>
+            {console.log(errors)}
             <div className={styles.container__nameUser}>
               <h2>
                 Здравствуйте, <strong>Человек №3596941</strong>
               </h2>
-              <a href="#"> Сменить статус</a>
+              <a href="/#"> Сменить статус</a>
             </div>
             <div className={styles.container__status}>
               <p>Прежде чем действовать, надо понять</p>
             </div>
-           
+
             <div className={styles.container__inputs}>
               <div className={styles.container__inputs_list}>
                 <p className={styles.container_all_p}>Ваш город</p>
@@ -98,7 +113,6 @@ const Authorization = () => {
                   Ваш новый пароль должен содержать не менее 5 символов.
                 </p>
               </div>
-              {console.log(values)}
               {touched.password && errors.password && <p>{errors.password}</p>}
               <div className={styles.container__inputs_text}>
                 <p className={styles.container_all_p}>Пароль еще раз</p>
