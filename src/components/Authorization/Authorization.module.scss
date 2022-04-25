@@ -1,0 +1,128 @@
+.wrapper {
+  width: 990px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  &__nameUser {
+    display: flex;
+    padding-left: 10px;
+    align-items: center;
+    > h2 {
+      font-family: "Arial";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 34px;
+      margin: 0px 140px 0px 0px;
+
+      color: #666666;
+      > strong {
+        font-family: "Arial";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 34px;
+        color: #000000;
+      }
+    }
+    > a {
+      font-family: "Arial";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 22px;
+      color: #0c77bb;
+    }
+  }
+
+  &__status {
+    margin: 0 auto 20px;
+    background: #eaeaea;
+    width: 503px;
+    padding-left: 8px;
+    > p {
+      font-family: "Arial";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+      color: #404040;
+    }
+  }
+  &__inputs {
+    &_list {
+      margin-bottom: 10px;
+      padding-left: 10px;
+      align-items: center;
+      display: flex;
+      justify-content: flex-start;
+    }
+    &_text {
+      margin-bottom: 10px;
+      padding-left: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+  }
+
+  &__iAgree {
+    padding-left: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    &__input {
+      > p {
+        font-family: "Arial";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+      }
+      > input {
+        display: block;
+        margin-right: 10px;
+      }
+    }
+
+    &__input {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    > p {
+      margin-left: 12px;
+      font-family: "Arial";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 20px;
+      color: #999999;
+    }
+  }
+  &_all_p {
+    width: 230px;
+    font-family: "Arial";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 19px;
+  }
+  &_all_p_gray {
+    margin-left: 18px;
+    max-width: 340px;
+    font-family: "Arial";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: #999999;
+  }
+}
