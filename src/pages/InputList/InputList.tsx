@@ -31,13 +31,13 @@ const InputList: React.FC<InputListProps> = ({
 
 
 
-  console.log(1);
+  console.log(value);
   return (
     <div className={styles.InputList__container}>
       <input
         type={type}
         className={styles.InputList__container_input}
-        name="sort"
+        name={name}
         value={value}
         placeholder={placeholder}
         list={`list_${name}`}
@@ -47,7 +47,7 @@ const InputList: React.FC<InputListProps> = ({
       <p className={styles.InputList__container_error} style={{ color: "red" }}>
         {error}
       </p>
-      <datalist id={`list_${name}`}>
+      <datalist   id={`list_${name}`}>
         {defaltValue &&
           defaltValue.map((item: any) => (
             <option key={Math.floor(Math.random() * (100000000 - 1 + 1)) + 2}>

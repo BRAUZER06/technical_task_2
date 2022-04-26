@@ -71,6 +71,7 @@ const Authorization = () => {
           password: "",
           confirmPassword: "",
           email: "",
+          iAgree: false,
         }}
         validateOnBlur
         onSubmit={(value) => {
@@ -118,18 +119,17 @@ const Authorization = () => {
               <div className={styles.container__inputs_list}>
                 <p className={styles.container_all_p}>Ваш университет</p>
                 <InputList
-               
                   name="universityName"
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={values.universityName}
                   defaltValue={posts.map((item) => item.name)}
                   error={touched.universityName && errors.universityName}
-                 
                   placeholder="Ваш университет..."
                 />
               </div>
-              {console.log(touched.universityName)}
+              {console.log(values.universityName)}
+              {/* {console.log(touched.universityName)} */}
               <hr className={styles.container__inputs_hr} />
               <div className={styles.container__inputs_text}>
                 <p className={styles.container_all_p}>Пароль</p>
@@ -138,7 +138,6 @@ const Authorization = () => {
                   name="password"
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  
                   value={values.password}
                   error={touched.password && errors.password}
                 />
