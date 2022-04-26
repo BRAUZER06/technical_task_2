@@ -4,139 +4,103 @@
 .container {
   display: flex;
   flex-direction: column;
+
+  //nameUser
   &__nameUser {
     display: flex;
     padding-left: 10px;
     align-items: center;
-    > h2 {
-      font-family: "Arial";
-      font-style: normal;
-      font-weight: 700;
+    &_helloUser {
       font-size: 30px;
-      line-height: 34px;
-      margin: 0px 140px 0px 0px;
       color: #666666;
+      font-weight: 700;
+      line-height: 34px;
+      font-style: normal;
+      font-family: "Arial";
+      margin: 0px 140px 0px 0px;
       > strong {
-        font-family: "Arial";
-        font-style: normal;
-        font-weight: 700;
         font-size: 30px;
-        line-height: 34px;
+        font-weight: 700;
         color: #000000;
+        line-height: 34px;
+        font-style: normal;
+        font-family: "Arial";
       }
     }
-    > a {
-      font-family: "Arial";
-      font-style: normal;
-      font-weight: 400;
+    &_statusBtn {
       font-size: 12px;
-      line-height: 22px;
+      font-weight: 400;
       color: #0c77bb;
+      line-height: 22px;
+      font-style: normal;
+      font-family: "Arial";
     }
   }
-  &__status {
+  //statusDiv
+  &__statusDiv {
     margin: 0 auto 20px;
-
-    > input {
-      box-shadow: 1px 1px 3px 1px rgba(34, 60, 80, 0.2);
-      background: #eaeaea;
+    &_input {
       width: 500px;
+      border: inherit;
+      font-size: 17px;
+      font-weight: 400;
+      color: #404040;
+      line-height: 22px;
+      font-style: normal;
       border-radius: 3px;
       font-family: "Arial";
-      font-style: normal;
-      font-weight: 400;
-      line-height: 22px;
-      color: #404040;
       background: #eaeaea;
-      border: inherit;
-      padding: 10px;
-      font-size: 17px;
-      padding-left: 14px;
-      padding-right: 10px;
+      padding: 10px 10px 10px 14px;
+      box-shadow: 1px 1px 3px 1px rgba(34, 60, 80, 0.2);
     }
   }
-  &__inputs {
-    &_list {
-      margin-bottom: 10px;
-      padding-left: 10px;
-      align-items: center;
-      display: flex;
-      justify-content: flex-start;
-    }
-    &_text {
-      margin-bottom: 10px;
-      padding-left: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-    }
-    &_hr {
-      margin: 15px 0px;
-      opacity: 0.5;
-    }
-  }
+
+  //iAgree
   &__iAgree {
-    padding-left: 10px;
     display: flex;
-    justify-content: flex-start;
+    padding-left: 10px;
     align-items: center;
-    &__input {
-      > p {
-        font-family: "Arial";
-        font-style: normal;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 19px;
-      }
-      > input {
+    justify-content: flex-start;
+
+    &_text {
+      width: 230px;
+      font-size: 21px;
+      font-weight: 400;
+      line-height: 19px;
+      font-style: normal;
+      font-family: "Arial";
+    }
+
+    &__inputDiv {
+      display: flex;
+      align-items: center;
+      &_input {
         display: block;
         margin-right: 10px;
       }
-    }
-    &__input {
-      display: flex;
-      align-items: center;
+      &_p {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19px;
+        font-style: normal;
+        font-family: "Arial";
+      }
     }
   }
+
+  //button
   &__button {
     display: flex;
     align-items: center;
     justify-content: center;
-    > p {
-      margin-left: 12px;
-      font-family: "Arial";
-      font-style: normal;
-      font-weight: 400;
+    &_data {
       font-size: 12px;
-      line-height: 20px;
+      font-weight: 400;
       color: #999999;
+      line-height: 20px;
+      margin-left: 12px;
+      font-style: normal;
+      font-family: "Arial";
     }
-  }
-  &_all_p {
-    width: 230px;
-    font-family: "Arial";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 21px;
-    line-height: 19px;
-  }
-  &_all_p_gray {
-    margin: 0px 0px 0px 18px;
-    max-width: 340px;
-    font-family: "Arial";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 20px;
-    color: #999999;
-  }
-}
-.Input__container {
-  &_input {
-    border-radius: 3px;
-    box-shadow: 2px 2px 4px 1px rgba(34, 60, 80, 0.3);
-    width: 305px;
-    height: 31px;
-    padding: 0px 10px;
   }
 }

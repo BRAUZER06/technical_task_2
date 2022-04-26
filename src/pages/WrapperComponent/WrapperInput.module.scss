@@ -1,0 +1,31 @@
+.container {
+  &__inputs {
+    &_text {
+      display: flex;
+      padding-left: 10px;
+      margin-bottom: 10px;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    &_p {
+      width: 230px;
+      font-size: 21px;
+      font-weight: 400;
+      line-height: 19px;
+      font-style: normal;
+      font-family: "Arial";
+    }
+
+    &_pGray {
+      font-size: 12px;
+      font-weight: 400;
+      max-width: 340px;
+      color: #999999;
+      line-height: 20px;
+      font-style: normal;
+      font-family: "Arial";
+      margin: 0px 0px 0px 18px;
+    }
+  }
+}

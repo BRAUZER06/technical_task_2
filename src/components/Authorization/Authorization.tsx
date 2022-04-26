@@ -6,6 +6,7 @@ import { fetchAllPostsAction } from "../../redux/ducks/comment/actionCreators";
 import Button from "../../pages/Buttons/Button";
 import Input from "../../pages/Input/Input";
 import InputList from "../../pages/InputList/InputList";
+import WrapperInput from "../../pages/WrapperComponent/WrapperInput";
 
 import { Formik } from "formik";
 
@@ -13,7 +14,7 @@ import styles from "./Authorization.module.scss";
 import fetchJson from "../../cities.json";
 import { validationsSchema } from "./validation";
 
-const Authorization = () => {
+const Authorization: React.FC = () => {
   const dispatch = useDispatch();
   const { error, loading, posts } = useAppSelector((state) => state.post);
   const [checkedStatusRedact, setCheckedStatusRedact] = React.useState(false);
@@ -21,7 +22,6 @@ const Authorization = () => {
     "Прежде чем действовать, надо понять"
   );
 
-  //нужно доделать
   const inputRef = React.useRef<any>(false);
 
   React.useEffect(() => {
@@ -29,7 +29,6 @@ const Authorization = () => {
   }, []);
 
   const onClickStatusRedact = () => {
-    //нужно доделать
     inputRef.current.focus();
     setCheckedStatusRedact(true);
   };
@@ -54,6 +53,7 @@ const Authorization = () => {
           confirmPassword: "",
           email: "",
           iAgree: false,
+          dataRedact: new Date(),
         }}
         validateOnBlur
         onSubmit={(value) => {
@@ -73,26 +73,29 @@ const Authorization = () => {
         }) => (
           <div className={styles.container}>
             <div className={styles.container__nameUser}>
-              <h2>
+              <h2 className={styles.container__nameUser_helloUser}>
                 Здравствуйте, <strong>Человек №3596941</strong>
               </h2>
-              <a onClick={onClickStatusRedact} href="/#">
+              <a
+                onClick={onClickStatusRedact}
+                className={styles.container__nameUser_statusBtn}
+                href="/#"
+              >
                 Сменить статус
               </a>
             </div>
 
-            <div className={styles.container__status}>
+            <div className={styles.container__statusDiv}>
               <input
                 ref={inputRef}
                 onChange={onChangeInputValue}
                 value={statusInputValue}
+                className={styles.container__statusDiv_input}
               />
             </div>
 
             <div className={styles.container__inputs}>
-              <div className={styles.container__inputs_list}>
-                <p className={styles.container_all_p}>Ваш город</p>
-
+              <WrapperInput leftText="Ваш город">
                 <InputList
                   name="cityName"
                   onBlur={handleBlur}
@@ -104,10 +107,9 @@ const Authorization = () => {
                   error={touched.cityName && errors.cityName}
                   placeholder="Ваш город..."
                 />
-              </div>
+              </WrapperInput>
 
-              <div className={styles.container__inputs_list}>
-                <p className={styles.container_all_p}>Ваш университет</p>
+              <WrapperInput leftText="Ваш университет">
                 <InputList
                   name="universityName"
                   onBlur={handleBlur}
@@ -117,11 +119,13 @@ const Authorization = () => {
                   error={touched.universityName && errors.universityName}
                   placeholder="Ваш университет..."
                 />
-              </div>
+              </WrapperInput>
 
               <hr className={styles.container__inputs_hr} />
-              <div className={styles.container__inputs_text}>
-                <p className={styles.container_all_p}>Пароль</p>
+              <WrapperInput
+                leftText="Пароль"
+                rightText="Ваш новый пароль должен содержать не менее 5 символов."
+              >
                 <Input
                   type="password"
                   name="password"
@@ -131,13 +135,13 @@ const Authorization = () => {
                   error={touched.password && errors.password}
                   placeholder="Введите пароль..."
                 />
-                <p className={styles.container_all_p_gray}>
-                  Ваш новый пароль должен содержать не менее 5 символов.
-                </p>
-              </div>
+              </WrapperInput>
 
-              <div className={styles.container__inputs_text}>
-                <p className={styles.container_all_p}>Пароль еще раз</p>
+              <WrapperInput
+                leftText="Пароль еще раз"
+                rightText="Повторите пароль, пожалуйста, это обезопасит вас с нами
+                            на случай ошибки."
+              >
                 <Input
                   type="password"
                   name="confirmPassword"
@@ -147,15 +151,14 @@ const Authorization = () => {
                   error={touched.confirmPassword && errors.confirmPassword}
                   placeholder="Введите пароль еще раз..."
                 />
-                <p className={styles.container_all_p_gray}>
-                  Повторите пароль, пожалуйста, это обезопасит вас с нами на
-                  случай ошибки.
-                </p>
-              </div>
+              </WrapperInput>
 
               <hr className={styles.container__inputs_hr} />
-              <div className={styles.container__inputs_text}>
-                <p className={styles.container_all_p}>Электронная почта</p>
+
+              <WrapperInput
+                leftText="Электронная почта"
+                rightText="Можно изменить адрес, указанный при регистрации. "
+              >
                 <Input
                   type="text"
                   name="email"
@@ -165,22 +168,22 @@ const Authorization = () => {
                   error={touched.email && errors.email}
                   placeholder="Введите почту..."
                 />
-                <p className={styles.container_all_p_gray}>
-                  Можно изменить адрес, указанный при регистрации.{" "}
-                </p>
-              </div>
+              </WrapperInput>
             </div>
 
             <div className={styles.container__iAgree}>
-              <p className={styles.container_all_p}>Я согласен</p>
-              <div className={styles.container__iAgree__input}>
+              <p className={styles.container__iAgree_text}>Я согласен</p>
+              <div className={styles.container__iAgree__inputDiv}>
                 <input
                   name="iAgree"
                   checked={values.iAgree}
                   onChange={handleChange}
                   type="checkbox"
+                  className={styles.container__iAgree__inputDiv_input}
                 />
-                <p>принимать актуальную информацию на емейл</p>
+                <p className={styles.container__iAgree__inputDiv_p}>
+                  принимать актуальную информацию на емейл
+                </p>
               </div>
             </div>
 
@@ -188,7 +191,9 @@ const Authorization = () => {
               <Button disabled={!isValid && !dirty} onClick={handleSubmit}>
                 Изменить
               </Button>
-              <p>последние изменения{}</p>
+              <p className={styles.container__button_data}>
+                последние изменения 15 мая 2012 в 14:55:17
+              </p>
             </div>
           </div>
         )}

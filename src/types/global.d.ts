@@ -19,3 +19,7 @@ declare module "./Authorization.module.scss" {
   const styles: { readonly [key: string]: string };
   export default styles;
 }
+declare module "./WrapperInput.module.scss" {
+  const styles: { readonly [key: string]: string };
+  export default styles;
+}
