@@ -17,7 +17,7 @@ import { validationsSchema } from "./validation";
 const Authorization: React.FC = () => {
   const dispatch = useDispatch();
   const { error, loading, posts } = useAppSelector((state) => state.post);
-  const [checkedStatusRedact, setCheckedStatusRedact] = React.useState(false);
+
   const [statusInputValue, setStatusInputValue] = React.useState(
     "Прежде чем действовать, надо понять"
   );
@@ -30,7 +30,6 @@ const Authorization: React.FC = () => {
 
   const onClickStatusRedact = () => {
     inputRef.current.focus();
-    setCheckedStatusRedact(true);
   };
   const onChangeInputValue = (event: any) => {
     setStatusInputValue(event.target.value);

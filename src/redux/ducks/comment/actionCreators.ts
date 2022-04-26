@@ -1,13 +1,13 @@
 import { instance } from "../../../config/instance";
-import { PostlTypes } from "./types";
+import { PostlTypes, Post } from "./types";
 
 const fetchPostsLoadingAction = () => {
   return { type: PostlTypes.FETCH_POST_LOADING };
 };
-const fetchPostsErrorAction = (error: any) => {
+const fetchPostsErrorAction = (error: string | null) => {
   return { type: PostlTypes.FETCH_POST_ERROR, payload: error };
 };
-const fetchPostsSecceesAction = (obj: any) => {
+const fetchPostsSecceesAction = (obj: Post) => {
   return { type: PostlTypes.FETCH_POST_SECCEES, payload: obj };
 };
 

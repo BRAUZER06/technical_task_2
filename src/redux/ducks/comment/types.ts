@@ -9,14 +9,14 @@ interface PostLoading {
 }
 interface PostError {
   type: PostlTypes.FETCH_POST_ERROR;
-  payload: string;
+  payload: string|null;
 }
 interface PostSeccees {
   type: PostlTypes.FETCH_POST_SECCEES;
   payload: any;
 }
 
-interface Post {
+export interface Post {
   "state-province": string | null;
   country: string;
   name: string;
@@ -25,7 +25,7 @@ interface Post {
   alpha_two_code: string;
 }
 
-export interface InitState {
+ export interface InitState {
   error: string | null;
   loading: boolean;
   posts: Post[];
