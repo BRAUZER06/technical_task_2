@@ -1,7 +1,6 @@
 .wrapper {
   width: 990px;
 }
-
 .container {
   display: flex;
   flex-direction: column;
@@ -16,7 +15,6 @@
       font-size: 30px;
       line-height: 34px;
       margin: 0px 140px 0px 0px;
-
       color: #666666;
       > strong {
         font-family: "Arial";
@@ -36,21 +34,25 @@
       color: #0c77bb;
     }
   }
-
   &__status {
-    border-radius: 3px;
-    box-shadow: 1px 1px 3px 1px rgba(34, 60, 80, 0.2);
     margin: 0 auto 20px;
-    background: #eaeaea;
-    width: 503px;
-    padding-left: 8px;
-    > p {
+
+    > input {
+      box-shadow: 1px 1px 3px 1px rgba(34, 60, 80, 0.2);
+      background: #eaeaea;
+      width: 500px;
+      border-radius: 3px;
       font-family: "Arial";
       font-style: normal;
       font-weight: 400;
-      font-size: 14px;
       line-height: 22px;
       color: #404040;
+      background: #eaeaea;
+      border: inherit;
+      padding: 10px;
+      font-size: 17px;
+      padding-left: 14px;
+      padding-right: 10px;
     }
   }
   &__inputs {
@@ -73,7 +75,6 @@
       opacity: 0.5;
     }
   }
-
   &__iAgree {
     padding-left: 10px;
     display: flex;
@@ -92,13 +93,11 @@
         margin-right: 10px;
       }
     }
-
     &__input {
       display: flex;
       align-items: center;
     }
   }
-
   &__button {
     display: flex;
     align-items: center;

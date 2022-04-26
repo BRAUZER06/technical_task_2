@@ -1,59 +1,41 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "../../hooks/useAppSelector";
+import { fetchAllPostsAction } from "../../redux/ducks/comment/actionCreators";
+
 import Button from "../../pages/Buttons/Button";
 import Input from "../../pages/Input/Input";
 import InputList from "../../pages/InputList/InputList";
-import { fetchAllPostsAction } from "../../redux/ducks/comment/actionCreators";
-import styles from "./Authorization.module.scss";
+
 import { Formik } from "formik";
-import * as yup from "yup";
-import { json } from "../../cities";
+
+import styles from "./Authorization.module.scss";
+import fetchJson from "../../cities.json";
+import { validationsSchema } from "./validation";
 
 const Authorization = () => {
-  const [fetchJson, setFetchJson] = React.useState(json);
   const dispatch = useDispatch();
   const { error, loading, posts } = useAppSelector((state) => state.post);
-  const validationsSchema = yup.object().shape({
-    cityName: yup
-      .string()
-      .typeError("Должно быть строкой")
-      .required("Это поле обязательно"),
-    universityName: yup
-      .string()
-      .typeError("Должно быть строкой")
-      .required("Это поле обязательно"),
-    password: yup
-      .string()
-      .typeError("Должно быть строкой")
-      .matches(
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
-        "Пароль не надежный "
-      )
-      .min(5, "Используйте не менее 5 символов")
-      .max(100, "Слишком большой пароль")
-      .required("Укажите пароль"),
-    confirmPassword: yup
-      .string()
-      .oneOf([yup.ref("password")], "Пароли не совпадают")
-      .min(5, "Используйте не менее 5 символов")
-      .max(100, "Слишком большой пароль")
-      .required("Это поле обязательно"),
-    email: yup
-      .string()
-      .email("Введите верный email")
-      .matches(
-        /^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@([A-Z|a-z|0-9])+((\.){0,1}[A-Z|a-z|0-9]){2}\.[a-z]{2,3}$/gm,
-        "Введите корректные данные "
-      )
-      .min(5, "Используйте не менее 7 символов")
-      .max(100, "Слишком много символов")
-      .required("Укажите E-mail"),
-  });
+  const [checkedStatusRedact, setCheckedStatusRedact] = React.useState(false);
+  const [statusInputValue, setStatusInputValue] = React.useState(
+    "Прежде чем действовать, надо понять"
+  );
+
+  //нужно доделать
+  const inputRef = React.useRef<any>(false);
 
   React.useEffect(() => {
     dispatch(fetchAllPostsAction());
   }, []);
+
+  const onClickStatusRedact = () => {
+    //нужно доделать
+    inputRef.current.focus();
+    setCheckedStatusRedact(true);
+  };
+  const onChangeInputValue = (event: any) => {
+    setStatusInputValue(event.target.value);
+  };
 
   if (loading) {
     return <h2>Loading...</h2>;
@@ -94,10 +76,17 @@ const Authorization = () => {
               <h2>
                 Здравствуйте, <strong>Человек №3596941</strong>
               </h2>
-              <a href="/#"> Сменить статус</a>
+              <a onClick={onClickStatusRedact} href="/#">
+                Сменить статус
+              </a>
             </div>
+
             <div className={styles.container__status}>
-              <p>Прежде чем действовать, надо понять</p>
+              <input
+                ref={inputRef}
+                onChange={onChangeInputValue}
+                value={statusInputValue}
+              />
             </div>
 
             <div className={styles.container__inputs}>
@@ -110,12 +99,13 @@ const Authorization = () => {
                   onChange={handleChange}
                   value={values.cityName}
                   defaltValue={fetchJson
-                    .filter((item) => item.population > 5000)
+                    .filter((item: any) => item.population > 5000)
                     .map((item) => item.city)}
                   error={touched.cityName && errors.cityName}
                   placeholder="Ваш город..."
                 />
               </div>
+
               <div className={styles.container__inputs_list}>
                 <p className={styles.container_all_p}>Ваш университет</p>
                 <InputList
@@ -128,8 +118,7 @@ const Authorization = () => {
                   placeholder="Ваш университет..."
                 />
               </div>
-              {console.log(values.universityName)}
-              {/* {console.log(touched.universityName)} */}
+
               <hr className={styles.container__inputs_hr} />
               <div className={styles.container__inputs_text}>
                 <p className={styles.container_all_p}>Пароль</p>
@@ -140,6 +129,7 @@ const Authorization = () => {
                   onChange={handleChange}
                   value={values.password}
                   error={touched.password && errors.password}
+                  placeholder="Введите пароль..."
                 />
                 <p className={styles.container_all_p_gray}>
                   Ваш новый пароль должен содержать не менее 5 символов.
@@ -155,6 +145,7 @@ const Authorization = () => {
                   onChange={handleChange}
                   value={values.confirmPassword}
                   error={touched.confirmPassword && errors.confirmPassword}
+                  placeholder="Введите пароль еще раз..."
                 />
                 <p className={styles.container_all_p_gray}>
                   Повторите пароль, пожалуйста, это обезопасит вас с нами на
@@ -172,35 +163,32 @@ const Authorization = () => {
                   onChange={handleChange}
                   value={values.email}
                   error={touched.email && errors.email}
+                  placeholder="Введите почту..."
                 />
                 <p className={styles.container_all_p_gray}>
                   Можно изменить адрес, указанный при регистрации.{" "}
                 </p>
               </div>
             </div>
+
             <div className={styles.container__iAgree}>
               <p className={styles.container_all_p}>Я согласен</p>
               <div className={styles.container__iAgree__input}>
                 <input
                   name="iAgree"
-                  value={values.iAgree}
+                  checked={values.iAgree}
                   onChange={handleChange}
                   type="checkbox"
                 />
                 <p>принимать актуальную информацию на емейл</p>
               </div>
             </div>
+
             <div className={styles.container__button}>
-              <Button
-                disabled={!isValid && !dirty}
-                onClick={handleSubmit}
-                type="submit"
-                value="Изменить"
-              >
+              <Button disabled={!isValid && !dirty} onClick={handleSubmit}>
                 Изменить
               </Button>
-
-              <p>последние изменения 15 мая 2012 в 14:55:17</p>
+              <p>последние изменения{}</p>
             </div>
           </div>
         )}

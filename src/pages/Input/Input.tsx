@@ -2,15 +2,13 @@ import React from "react";
 import styles from "./Input.module.scss";
 
 interface InputProps {
-  onChange?: (e: any) => {};
-  onBlur?: (e: any) => {};
-  error: string;
-  value?: string;
-  name?: string;
-  placeholder?: string;
-  width?: string;
-  height?: string;
+  onBlur?: (e:any) => void;
+  onChange?: (e:any) => void;
+  name: string;
   type?: string;
+  value: string;
+  error?: any;
+  placeholder?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -19,10 +17,8 @@ const Input: React.FC<InputProps> = ({
   error,
   value,
   name,
-  placeholder = "введите значение",
-  width,
-  height,
   type,
+  placeholder = "введите значение",
 }) => {
   return (
     <div className={styles.Input__container}>
