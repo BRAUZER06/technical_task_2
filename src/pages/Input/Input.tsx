@@ -5,7 +5,7 @@ interface InputProps {
   onChange?: (e: any) => {};
   onBlur?: (e: any) => {};
   error: string;
-  values?: string;
+  value?: string;
   name?: string;
   placeholder?: string;
   width?: string;
@@ -17,7 +17,7 @@ const Input: React.FC<InputProps> = ({
   onChange,
   onBlur,
   error,
-  values,
+  value,
   name,
   placeholder = "введите значение",
   width,
@@ -29,7 +29,7 @@ const Input: React.FC<InputProps> = ({
       <input
         onChange={onChange}
         onBlur={onBlur}
-        value={values}
+        value={value}
         name={name}
         type={type}
         placeholder={placeholder}

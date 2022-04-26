@@ -1,9 +1,11 @@
 .Input__container {
+  height: 35px;
   &_input {
+    box-sizing: border-box;
     border-radius: 3px;
     box-shadow: 2px 2px 4px 1px rgba(34, 60, 80, 0.3);
     width: 305px;
-    height: 31px;
+    height: 100%;
     padding: 0px 10px;
   }
   &_error{

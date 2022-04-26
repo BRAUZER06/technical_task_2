@@ -57,7 +57,7 @@
     &_list {
       margin-bottom: 10px;
       padding-left: 10px;
-    
+      align-items: center;
       display: flex;
       justify-content: flex-start;
     }
@@ -65,7 +65,7 @@
       margin-bottom: 10px;
       padding-left: 10px;
       display: flex;
-      
+      align-items: center;
       justify-content: flex-start;
     }
     &_hr {
@@ -122,8 +122,7 @@
     line-height: 19px;
   }
   &_all_p_gray {
-    margin: 5px 0px 0px 18px;
-  
+    margin: 0px 0px 0px 18px;
     max-width: 340px;
     font-family: "Arial";
     font-style: normal;

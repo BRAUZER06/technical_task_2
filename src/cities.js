@@ -1,4 +1,4 @@
-[
+export const json = [
     {
         "city": "Артёмовск",
         "population": "1688"

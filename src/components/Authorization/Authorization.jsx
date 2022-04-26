@@ -8,11 +8,21 @@ import { fetchAllPostsAction } from "../../redux/ducks/comment/actionCreators";
 import styles from "./Authorization.module.scss";
 import { Formik } from "formik";
 import * as yup from "yup";
+import { json } from "../../cities";
 
 const Authorization = () => {
+  const [fetchJson, setFetchJson] = React.useState(json);
   const dispatch = useDispatch();
   const { error, loading, posts } = useAppSelector((state) => state.post);
   const validationsSchema = yup.object().shape({
+    cityName: yup
+      .string()
+      .typeError("Должно быть строкой")
+      .required("Это поле обязательно"),
+    universityName: yup
+      .string()
+      .typeError("Должно быть строкой")
+      .required("Это поле обязательно"),
     password: yup
       .string()
       .typeError("Должно быть строкой")
@@ -41,10 +51,9 @@ const Authorization = () => {
       .required("Укажите E-mail"),
   });
 
-  // React.useEffect(() => {
-  //   dispatch(fetchAllPostsAction());
-  // }, []);
-  // console.log(posts);
+  React.useEffect(() => {
+    dispatch(fetchAllPostsAction());
+  }, []);
 
   if (loading) {
     return <h2>Loading...</h2>;
@@ -57,6 +66,8 @@ const Authorization = () => {
     <div className={styles.wrapper}>
       <Formik
         initialValues={{
+          cityName: "",
+          universityName: "",
           password: "",
           confirmPassword: "",
           email: "",
@@ -91,13 +102,34 @@ const Authorization = () => {
             <div className={styles.container__inputs}>
               <div className={styles.container__inputs_list}>
                 <p className={styles.container_all_p}>Ваш город</p>
-                <InputList name={"city"} />
+
+                <InputList
+                  name="cityName"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.cityName}
+                  defaltValue={fetchJson
+                    .filter((item) => item.population > 5000)
+                    .map((item) => item.city)}
+                  error={touched.cityName && errors.cityName}
+                  placeholder="Ваш город..."
+                />
               </div>
               <div className={styles.container__inputs_list}>
-                <p className={styles.container_all_p}>Ваш университет</p>{" "}
-                <InputList name={"university"} />
+                <p className={styles.container_all_p}>Ваш университет</p>
+                <InputList
+               
+                  name="universityName"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.universityName}
+                  defaltValue={posts.map((item) => item.name)}
+                  error={touched.universityName && errors.universityName}
+                 
+                  placeholder="Ваш университет..."
+                />
               </div>
-
+              {console.log(touched.universityName)}
               <hr className={styles.container__inputs_hr} />
               <div className={styles.container__inputs_text}>
                 <p className={styles.container_all_p}>Пароль</p>
@@ -105,8 +137,9 @@ const Authorization = () => {
                   type="password"
                   name="password"
                   onBlur={handleBlur}
-                  values={values.password}
                   onChange={handleChange}
+                  
+                  value={values.password}
                   error={touched.password && errors.password}
                 />
                 <p className={styles.container_all_p_gray}>
@@ -120,8 +153,8 @@ const Authorization = () => {
                   type="password"
                   name="confirmPassword"
                   onBlur={handleBlur}
-                  values={values.confirmPassword}
                   onChange={handleChange}
+                  value={values.confirmPassword}
                   error={touched.confirmPassword && errors.confirmPassword}
                 />
                 <p className={styles.container_all_p_gray}>
@@ -135,10 +168,10 @@ const Authorization = () => {
                 <p className={styles.container_all_p}>Электронная почта</p>
                 <Input
                   type="text"
-                  onBlur={handleBlur}
                   name="email"
-                  values={values.email}
+                  onBlur={handleBlur}
                   onChange={handleChange}
+                  value={values.email}
                   error={touched.email && errors.email}
                 />
                 <p className={styles.container_all_p_gray}>
