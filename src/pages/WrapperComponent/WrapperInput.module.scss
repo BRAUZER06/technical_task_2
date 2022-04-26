@@ -1,12 +1,10 @@
 .container {
-  &__inputs {
-    &_text {
-      display: flex;
-      padding-left: 10px;
-      margin-bottom: 10px;
-      align-items: center;
-      justify-content: flex-start;
-    }
+  &__input {
+    display: flex;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: flex-start;
 
     &_p {
       width: 230px;
@@ -26,6 +24,58 @@
       font-style: normal;
       font-family: "Arial";
       margin: 0px 0px 0px 18px;
+    }
+  }
+}
+
+@media (max-width: 920px) {
+  .container {
+    &__input {
+      &_p {
+        font-size: 17px;
+        width: 140px;
+        line-height: 20px;
+        margin-right: 2px;
+      }
+      &_pGray {
+        max-width: 300px;
+      }
+    }
+  }
+}
+@media (max-width: 790px) {
+  .container {
+    &__input {
+      &_p {
+        font-size: 17px;
+        width: 140px;
+        line-height: 20px;
+        margin-right: 2px;
+      }
+      &_pGray {
+        max-width: 200px;
+      }
+    }
+  }
+}
+
+@media (max-width: 690px) {
+  .container {
+    &__input {
+      align-items: flex-start;
+      flex-direction: column;
+
+      width: 320px;
+      margin: 10px auto 3px;
+      &_p {
+        width: 280px;
+        margin: 0px;
+      }
+      &_pGray {
+        padding-top: 5px;
+        margin: 5px 0px 0px 0px;
+        max-width: 300px;
+      }
     }
   }
 }

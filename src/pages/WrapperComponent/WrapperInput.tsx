@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React from "react";
 import styles from "./WrapperInput.module.scss";
 
 interface WrapperInputProps {
@@ -13,10 +13,10 @@ const WrapperInput: React.FC<WrapperInputProps> = ({
   rightText,
 }) => {
   return (
-    <div className={styles.container__inputs_text}>
-      <p className={styles.container__inputs_p}>{leftText}</p>
+    <div className={styles.container__input}>
+      <p className={styles.container__input_p}>{leftText}</p>
       {children}
-      <p className={styles.container__inputs_pGray}>{rightText}</p>
+      <p className={styles.container__input_pGray}>{rightText}</p>
     </div>
   );
 };

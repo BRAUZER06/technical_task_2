@@ -8,7 +8,7 @@ interface InputListProps {
   name?: string;
   text?: string;
   error?: any;
-  defaltValue?: any[];
+  defaltValue?: any;
   placeholder?: string;
 }
 

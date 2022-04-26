@@ -1,5 +1,5 @@
 .wrapper {
-  width: 990px;
+  max-width: 990px;
 }
 .container {
   display: flex;
@@ -101,6 +101,90 @@
       margin-left: 12px;
       font-style: normal;
       font-family: "Arial";
+    }
+  }
+}
+
+@media (max-width: 790px) {
+  .container {
+    &__nameUser {
+      justify-content: center;
+      &_helloUser {
+        font-size: 24px;
+        margin: 0px 40px 0px 0px;
+        > strong {
+          font-size: 24px;
+        }
+      }
+
+      &_statusBtn {
+        font-size: 12px;
+        font-weight: 400;
+        color: #0c77bb;
+        line-height: 22px;
+        font-style: normal;
+        font-family: "Arial";
+      }
+    }
+
+    &__iAgree {
+      &_text {
+        width: 140px;
+        font-size: 17px;
+      }
+    }
+  }
+}
+
+@media (max-width: 690px) {
+  .container {
+    &__nameUser {
+      align-items: center;
+      &_helloUser {
+        font-size: 17px;
+        margin: 0px 10px 0px 0px;
+        > strong {
+          font-size: 17px;
+        }
+      }
+    }
+
+    &__statusDiv {
+      margin: 0 auto 20px;
+      &_input {
+        width: 290px;
+        font-size: 14px;
+      }
+    }
+
+    &__iAgree {
+      width: 380px;
+      margin: 0 auto;
+      text-align: start;
+      align-items: flex-start;
+      flex-direction: column;
+      &_text {
+        width: 140px;
+        font-size: 17px;
+        margin: 0;
+        margin-top: 10px;
+      }
+    }
+  }
+}
+@media (max-width: 390px) {
+  .container {
+    &__iAgree {
+      width: 280px;
+
+      &_text {
+        justify-content: fle;
+        text-align: left;
+        width: 140px;
+      }
+      &__inputDiv_p {
+        margin-top: 5px;
+      }
     }
   }
 }

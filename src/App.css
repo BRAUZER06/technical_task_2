@@ -2,6 +2,6 @@
 .App {
 padding-top: 100px;
   margin:  0 auto;
-  width: 1170px;
+  max-width: 990px;
 }
                                     
