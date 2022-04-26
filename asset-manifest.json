@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/technical_task_2/static/css/main.5744ffd4.css",
+    "main.js": "/technical_task_2/static/js/main.c7ef5a18.js",
+    "index.html": "/technical_task_2/index.html",
+    "main.5744ffd4.css.map": "/technical_task_2/static/css/main.5744ffd4.css.map",
+    "main.c7ef5a18.js.map": "/technical_task_2/static/js/main.c7ef5a18.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5744ffd4.css",
+    "static/js/main.c7ef5a18.js"
+  ]
+}
